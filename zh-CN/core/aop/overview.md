@@ -96,16 +96,18 @@ AOP 由 `切面`、`通知`、`连接点`、`切入点`，四部分组成。
  * the test of aspcet
  *
  * @Aspect()
- *
+ * 这里引入PHP类，当这个类当任意一个方法被执行的时候会自动调用AOP
  * @PointBean(
  *     include={AopBean::class},
  * )
+ * 这里也是PHP类，这里和上面不同的地方在于这里在引入类被调用的时候还得使用注解才会被调用，否则不会
  * @PointAnnotation(
  *     include={
  *      Cacheable::class,
  *      CachePut::class
  *      }
  *  )
+ * 这里定义到具体到一个方法，reg代表驼峰命名前面小写部分，当使用“*”表示以reg开头的方法被执行都会触发AOP
  * @PointExecution(
  *     include={
  *      "Swoft\Testing\Aop\RegBean::reg.*",
